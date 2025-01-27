@@ -19,6 +19,11 @@ const AuthForm = ({ className }: AuthFormProps) => {
     console.log("Form submitted");
   };
 
+  const handleForgotPassword = () => {
+    // Handle forgot password
+    console.log("Forgot password clicked");
+  };
+
   return (
     <div className={cn("w-full max-w-md mx-auto p-6", className)}>
       <div className="bg-black/30 backdrop-blur-lg rounded-2xl p-8 shadow-xl border border-white/10">
@@ -150,19 +155,30 @@ const AuthForm = ({ className }: AuthFormProps) => {
             />
           </div>
 
-          <div className="flex items-center space-x-2">
-            <Checkbox
-              id="remember"
-              checked={rememberMe}
-              onCheckedChange={(checked) => setRememberMe(checked as boolean)}
-              className="border-white/20 data-[state=checked]:bg-lime data-[state=checked]:border-lime"
-            />
-            <label
-              htmlFor="remember"
-              className="text-sm font-medium leading-none text-white cursor-pointer"
-            >
-              Remember me
-            </label>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-2">
+              <Checkbox
+                id="remember"
+                checked={rememberMe}
+                onCheckedChange={(checked) => setRememberMe(checked as boolean)}
+                className="border-white/20 data-[state=checked]:bg-lime data-[state=checked]:border-lime"
+              />
+              <label
+                htmlFor="remember"
+                className="text-sm font-medium leading-none text-white cursor-pointer"
+              >
+                Remember me
+              </label>
+            </div>
+            {!isSignUp && (
+              <button
+                type="button"
+                onClick={handleForgotPassword}
+                className="text-sm text-lime hover:underline"
+              >
+                Forgot password?
+              </button>
+            )}
           </div>
 
           <Button
